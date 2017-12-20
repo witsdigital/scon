@@ -1,0 +1,111 @@
+<!-- Title for header bar (refer to www/index.html) -->
+
+
+<ion-view ng-controller="unidades" hide-back-button="true" title="Meus Dados  ">
+
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+   <ion-nav-buttons side="right">
+    <button ng-click="doRefresh()" class="button button-icon icon ion-refresh"></button>
+  </ion-nav-buttons>
+  <ion-content     >
+
+   <div ng-show="!statuslogado">
+    <div >
+
+
+
+
+     <div style="padding: 10%; margin-top: 0px;">
+
+      <div align="center"> 
+        <h3>Você não esta logado</h3>
+        <span class=" small balanced">Faça o login para visualizar seu perfil</span><br><br>
+        <br><span class="small balanced"><a href="#/app/login"><button class="button button-balanced">
+        Entrar agora!
+      </button></a></span>
+
+    </div> 
+
+  </div>
+
+
+
+</div>
+</div>
+<ion-refresher pulling-icon="ion-more" spinner="spiral" on-refresh="doRefresh()">
+
+</ion-refresher>
+
+<div  ng-if="ativo"   ng-show="statuslogado"><br>
+
+  <div align="right "> 
+
+
+
+<button ng-click="apagamat()"  ng-show="mat[0]" class="button button-small button-assertive">
+ Apagar Matricula
+  </button>
+
+
+</div>
+
+<div style="margin-top: 10px; padding: 10px; margin-bottom: 0px;" align="left">
+  <div align="center" ng-show="!mat[0]"><h4><strong>Você não está inscrito</strong></h4></div>
+  {{ data| date:'dd/MM/yyyy HH:mm:ss'}}
+  <ul class="list-group">
+
+    <li class="list-group-item">Nome: <strong>{{dadosuser.nome}}</strong></li>
+    <li class="list-group-item">Email: <strong>{{dadosuser.email}}</strong></li>
+    <li ng-show="mat[0]" class="list-group-item">Matrícula: <strong>{{mat[0].matricula}}</strong></li> 
+    <li ng-show="mat[0]" class="list-group-item">Camisa: <strong><span ng-if="mat[0].camisa==1">Sim (15,00 )</span><span ng-if="mat[0].camisa==0">Não</span></strong></li>
+    <li ng-show="mat[0]" class="list-group-item">Forma Pagamento: <strong><span ng-if="mat[0].formpag==1">Em Mãos na FTC</span><span ng-if="mat[0].formpag==2">Cartão/boleto</span></strong></li>
+
+    <li ng-show="mat[0]" class="list-group-item">Valor: <strong> R$ {{totalfatura}},00</strong><span ng-if="lista.length==2"> (desconto de R$20,00)</span></li> 
+  </ul>
+
+</div>
+
+
+<div  ng-show="mat[0]" class="list">
+ <div style="padding: 10px;" class="well">Minicursos escolhidos: <strong>{{lista.length}}</strong></div>
+
+ <div ng-repeat="mat in lista">
+
+  <ion-list>
+    <ion-item>
+      <h2><strong>{{mat.curso}}</strong></h2>
+      <p><div>{{mat.data}}</div> <div align="">R$ {{mat.valor}} </div></p>
+      <p>Status: <span ng-if="mat.status == 1" class="small assertive"><strong>Pendente</strong></span><span ng-if="mat.status == 2" class="small balanced"><strong>Pago</strong></span></p>
+
+     <!-- <ion-option-button ng-click="deletamat({{mat.id}})" class="button-assertive">Excluir</ion-option-button>-->
+  </ion-list>
+
+
+</div>
+
+
+
+</div>
+
+<div ng-if="mat[0].formpag==2" ng-show="pagativo" class="row" >
+
+  <div class="col animated zoomIn col-70"><a target="_self"><img class="btn_menu" src="img/bt/formaspag.png" alt="User"></a></div>
+  
+  <div  ng-click="openBrowser()"  class="col animated zoomIn col-30"><a  ><img class="btn_menu" src="img/bt/pag.png" alt="User"></a></div>
+  
+
+  
+
+
+
+</div>
+
+
+</div>
+
+</ion-content>

@@ -1,0 +1,57 @@
+
+<!-- Title for header bar (refer to www/index.html) -->
+<ion-view title="Notícias">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="right">
+    <img ng-show="statuslogado" class="item_img img-circle " src="{{url+dadosuser.imgtumb}}">
+  </ion-nav-buttons>
+
+
+  <ion-content class="has-header gem-ion-content" ng-controller="getNew">
+    <ion-refresher pulling-icon="ion-more" spinner="spiral" on-refresh="doRefresh()">
+
+    </ion-refresher>
+    <Br>
+      <div class="list" align="center" ng-show="!n.length"><h4>{{msg}}</h4></div>
+
+      <div  ng-repeat="noticia in n">
+        <div  class="animated fadeInUp  ">
+
+         <div class="list">
+
+          <a class="item item-thumbnail-left" ng-click="setId({{noticia.id}})" href="#/app/news_view">
+            <img src="{{url+noticia.imgtumb}}">
+            <h2>{{noticia.titulo}}</h2>
+            <p>{{noticia.subtitulo}}</p>
+            <p> <i class="icon ion-calendar"> </i> {{noticia.data}}</p>
+
+          </a>
+
+
+
+        </div>
+
+        
+
+
+      </div>
+
+      
+
+
+
+      
+
+
+    </div>
+  </ion-content>
+</ion-view>

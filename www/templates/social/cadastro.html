@@ -1,0 +1,246 @@
+
+
+
+<style type="text/css">
+  .textimput{
+    color: #c6c6c6;
+  }
+  .error{
+    font-size: 9px;
+    color: red;
+  }
+  .imputs{
+    background-color: #f4f4f4;
+  }
+
+  .bar.bar-positive{
+
+
+   background-color: #{{cor}};
+
+ }
+
+ .platform-ios.platform-cordova:not(.fullscreen) .top-statusbar {
+  border-top: 20px solid #0c29a4 !important;
+  width: 100%;
+}
+</style>
+
+
+<ion-view view-title="Novo Cliente">
+
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+
+
+  <div class="text-center positive middle-align" ng-if="msg != ''">
+    {{msg}}
+  </div>
+  <ion-content ng-controller="cadastro">
+    <form name="formCadastro" >
+
+      <div  class="list list-inset">
+        <label  class=" imputs item item-input">
+          <input   type="text" ng-model="cadastro.nome" name="nome" required placeholder="Nome completo *" minlength="2">
+
+        </label>
+        <span class="error" ng-show="formCadastro.nome.$error.required || formCadastro.nome.$pristine">Nome é obrigatório</span>
+        <span class="error" ng-show="formCadastro.nome.$error.minlength && !formCadastro.nome.$pristine">No mínimo 2 caracteres</span>
+      </div>
+      <div class="list list-inset">
+        <label class="imputs item item-input">
+          <input  ng-required="true" type="tel" ng-model="cadastro.telefone" name="fone"  placeholder="Telefone *">
+
+        </label>
+        <span class="error" ng-show="formCadastro.fone.$error.required || formCadastro.fone.$pristine">Telefone é obrigatório</span>
+        <span class="error" ng-show="formCadastro.fone.$error.number && !formCadastro.fone.$pristine">Telefone incorreto</span>
+      </div>
+      <div class="list list-inset">
+        <label class="imputs item item-input">
+          <input ng-required="true" type="email" ng-model="cadastro.email" name="email"  placeholder="Email *">
+
+        </label>
+        <span class="error" ng-show="formCadastro.email.$error.required || formCadastro.email.$pristine">Email é obrigatório</span>
+        <span class="error" ng-show="formCadastro.email.$error.email && !formCadastro.email.$pristine">Email Incorreto</span>
+      </div>
+      <div class="list list-inset">
+        <label class="imputs item item-input">
+         <input  ng-required="true" type="text" maxlength="11" name="cpf" minlength="11" ng-model="cadastro.cpf" ng-blur="blurCallback(cadastro.cpf)"  placeholder="CPF *">
+
+
+       </label>
+       <span class="error" ng-show="formCadastro.cpf.$error.required || formCadastro.cpf.$pristine">CPF obrigatório</span>
+       <span class="error" ng-show="formCadastro.cpf.$error.maxlength && !formCadastro.cpf.$pristine">No Máximo 11 caracteres</span>
+       <span class="error" ng-show="formCadastro.cpf.$error.minlength && !formCadastro.cpf.$pristine">No mínimo 11 caracteres</span>
+       <span style="font-size: 11px; color: gray" class="small">Somente números ex:123456789</span>
+     </div>
+
+     <div class="list list-inset">
+      <label class="imputs item item-input">
+        <input  ng-required="true" type="text" name="rg" maxlength="11" ng-model="cadastro.rg" ng-blur="blurCallback(cadastro.rg)"  placeholder="RG *">
+
+      </label>
+      <span class="error" ng-show="formCadastro.rg.$error.required || formCadastro.rg.$pristine">rg obrigatório</span>
+      <span class="error" ng-show="formCadastro.rg.$error.maxlength && !formCadastro.rg.$pristine">No Máximo 11 caracteres</span>
+      <span style="font-size: 11px; color: gray" class="small">Somente números ex:123456789</span>
+    </div>
+
+
+
+
+    <div class="list list-inset">
+      <label class="imputs item item-input">
+        <input  ng-required="true" type="text" ng-model="cadastro.endereco" name="rua" placeholder="Rua *">
+
+      </label>
+
+      <span class="error" ng-show="formCadastro.rua.$error.required || formCadastro.rua.$pristine">Rua obrigatório</span>
+    </div>
+
+    <div class="list list-inset">
+      <label class="imputs item item-input">
+       <input  ng-required="true" type="text" ng-model="cadastro.bairro" name="bairro"  placeholder="bairro *">
+
+     </label>
+     <span class="error" ng-show="formCadastro.bairro.$error.required || formCadastro.bairro.$pristine">bairro obrigatório</span>
+   </div>
+   <div class="list list-inset">
+    <label class="imputs item item-input">
+      <input  ng-required="true" type="text" name="numero" ng-model="cadastro.numero"  placeholder="numero *">
+
+    </label>
+    <span class="error" ng-show="formCadastro.numero.$error.required || formCadastro.numero.$pristine">numero obrigatório</span>
+  </div>
+
+
+  <div class="list list-inset">
+    <label class="imputs item item-input">
+      <input type="text" ng-model="cadastro.cep"  placeholder="CEP">
+    </label>
+  </div>
+
+
+
+  <div class="list list-inset">
+    <label class="imputs item item-input">
+     <input type="text" ng-model="cadastro.referencia"  placeholder="Referência">
+   </label>
+ </div>
+
+
+
+
+
+ <div class="list list-inset">
+   <label class="item item-input item-select">
+    <div class="input-label textimput">
+      Cidade
+    </div>
+    <select required name="cidade" ng-model="cadastro.cidade" >
+
+      <option ng-repeat="clientes in cidades"  value="{{clientes.id_cidade}}">{{clientes.nome}}</option>
+
+    </select>
+
+  </label>
+  <span class="error" ng-show="formCadastro.cidade.$pending.required || formCadastro.cidade.$pristine">cidade obrigatório</span>
+
+</div>
+
+
+<div class="list list-inset">
+ <label class="item item-input item-select">
+  <div class="input-label textimput">
+    Estado
+  </div>
+
+  <select  name="estado" required ng-model="cadastro.estado" >
+
+    <option value="">Selecione ...</option>
+    <option value="AC">Acre</option>
+    <option value="AL">Alagoas</option>
+    <option value="AP">Amapá</option>
+    <option value="AM">Amazonas</option>
+    <option value="BA">Bahia</option>
+    <option value="CE">Ceará</option>
+    <option value="DF">Distrito Federal</option>
+    <option value="GO">Goiás</option>
+    <option value="ES">Espírito Santo</option>
+    <option value="MA">Maranhão</option>
+    <option value="MT">Mato Grosso</option>
+    <option value="MS">Mato Grosso do Sul</option>
+    <option value="MG">Minas Gerais</option>
+    <option value="PA">Pará</option>
+    <option value="PB">Paraiba</option>
+    <option value="PR">Paraná</option>
+    <option value="PE">Pernambuco</option>
+    <option value="PI">Piauí­</option>
+    <option value="RJ">Rio de Janeiro</option>
+    <option value="RN">Rio Grande do Norte</option>
+    <option value="RS">Rio Grande do Sul</option>
+    <option value="RO">Rondônia</option>
+    <option value="RR">Roraima</option>
+    <option value="SP">São Paulo</option>
+    <option value="SC">Santa Catarina</option>
+    <option value="SE">Sergipe</option>
+
+  </select>
+
+</label>
+  <span class="error" ng-show="formCadastro.estado.$error.required || formCadastro.estado.$pristine">estado obrigatório</span>
+
+</div>
+
+
+</form>
+<div class="row" >
+
+  <div class="col animated zoomIn col-30"><a href="#/app/cadastro" target="_self"></a></div>
+
+
+  <div class="col animated zoomIn col-30"><a href="#/app/cadastro" target="_self">
+
+   <button ng-click="cadastrar(cadastro)"  ng-disabled="formCadastro.$invalid" class="button button-balanced">
+    Salvar
+  </button>
+
+
+
+
+</a></div>
+
+
+
+<div class="col animated zoomIn col-30">
+  <a href="#/app/home" target="_self">
+
+
+
+
+   <button   class="button button-assertive">
+     Cancelar
+   </button>
+
+ </a>
+</div>
+
+
+
+</div>
+
+
+</button>
+
+</div>
+
+
+
+
+</ion-content>
+</ion-view>

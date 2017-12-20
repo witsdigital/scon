@@ -1,0 +1,88 @@
+
+<style type="text/css">
+  
+.icones{
+  width: 40px;
+  padding: 5px;
+}
+
+</style>
+
+<!-- Title for header bar (refer to www/index.html) -->
+<ion-view title="Notícias">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="right">
+      <img ng-show="statuslogado" class="item_img img-circle " src="{{url+dadosuser.imgtumb}}">
+  </ion-nav-buttons>
+  
+  <!-- ======================
+  MAIN CONTENT SECTION
+  ====================== -->
+  <ion-content class="has-header gem-ion-content" ng-controller="getNewOne">
+    <!-- Media section (Picture, Video, Map, etc) -->
+    
+    <div ng-repeat="not in n track by $index">
+
+    <div class="news-media">
+      <!-- Image 100% width -->
+      <img src="{{url+not.img}}" alt="" class="fluid-image"> 
+
+      <!-- Stats (Absolutely positioned right) -->
+      
+
+    <!-- News Item (With Poster and content text summary) -->
+    <div class="news-item">
+      <!-- Poster Thumb -->
+      
+      <!-- End Poster -->
+
+      <!-- Content -->
+     
+      <h3  style="text-align: justify;"><strong>{{not.titulo}} </strong></h3>
+      <p  ><br></p>
+        <h4 style="text-align: justify;">{{not.subtitulo}}</h4>
+        <p  ></p>
+        <p>Data: {{not.data}}</p>
+        <div style="text-align: justify;" ng-bind-html="not.conteudo"></div>
+
+ 
+
+        <!-- Stat Section (Absolutely Positioned Right) Version 1-->
+        <div align="right" class="other-stats">
+           <img ng-click="compartilhar(not)" class="icones"  src="img/images/share.png" >
+           <img ng-click="compartilhar_whatsapp(not)" class="icones" src="img/images/whatsapp.png" >
+            <img ng-click="compartilhar_facebook(not)" class="icones" src="img/images/facebook.png" >
+          
+        </div>
+        
+      </div>
+      <!-- End Content -->
+
+      <!-- Mock trigger button for action sheet for this post -->
+      <div class="news-more-action">
+        <i class="icon ion-more"></i>
+      </div>
+      <!-- End Button -->
+
+    </div>
+    <!-- End News Item -->
+
+    <!-- News Item (For Album Art, Artist Name and Player) -->
+    
+    </div>
+
+
+</div>
+
+
+  </ion-content>
+</ion-view>

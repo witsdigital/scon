@@ -1,0 +1,176 @@
+<style type="text/css">
+  .error{
+    font-size: 9px;
+    color: red;
+  }
+</style>
+
+<ion-modal-view>
+ <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Editar</h1>
+  <button class="button button-clear button-primary" ng-click="modal.hide()">Fechar</button>
+</ion-header-bar>
+<ion-content ng-controller="editcliente">
+  <form name="formCadastro">
+
+    <div  class="list list-inset">
+      <label  class=" imputs item item-input">
+       <label  style="color: #0f6e71; font-size: 12px; padding-right: 10px"><i class="ion ion-person"></i><b> Nome:</b> </label>
+       <input name="nome" required  type="text" ng-model="cadastro[0].nome" placeholder="Nome completo *">
+     </label>
+     <span class="error" ng-show="formCadastro.nome.$error.required">Nome é obrigatório</span>
+     <span class="error" ng-show="formCadastro.nome.$error.minlength && !formCadastro.nome.$pristine">No mínimo 2 caracteres</span>
+   </div>
+   <div class="list list-inset">
+    <label class="imputs item item-input">
+
+      <label  style="color: #0f6e71; font-size: 12px; padding-right: 10px"><i class="ion ion-ios-telephone"></i><b> Telefone:</b> </label>
+      <input name="fone"  type="tel" ng-model="cadastro[0].telefone" required  placeholder="Telefone *">
+    </label>
+    <span class="error" ng-show="formCadastro.fone.$error.required">Campo é obrigatório</span>
+
+  </div>
+  <div class="list list-inset">
+    <label class="imputs item item-input">
+      <label  style="color: #0f6e71; font-size: 12px; padding-right: 10px"><i class="ion ion-email"></i><b> Email:</b> </label>
+      <input ng-required="true" type="email" name="email" ng-model="cadastro[0].email"  placeholder="Email *">
+    </label>
+    <span class="error" ng-show="formCadastro.email.$error.required">Campo é obrigatório</span>
+    <span class="error" ng-show="formCadastro.email.$error.email">Formato incorreto</span>
+  </div>
+  <div class="list list-inset">
+    <label class="imputs item item-input">
+      <label  style="color: #0f6e71; font-size: 12px; padding-right: 10px"><i class="ion ion-document-text"></i><b> CPF:</b> </label>
+      <input  ng-required="true" type="number" name="cpf"  maxlength="11" ng-model="cadastro[0].cpf" ng-blur="blurCallback(cadastro.cpf)"  placeholder="CPF *">
+
+    </label>
+    <span class="error" ng-show="formCadastro.cpf.$error.maxlength ">No Máximo 11 caracteres</span>
+    <span style="font-size: 11px; color: gray" class="small">Somente números ex:123456789</span>
+  </div>
+
+  <div class="list list-inset">
+    <label class="imputs item item-input">
+     <label  style="color: #0f6e71; font-size: 12px; padding-right: 10px"><i class="ion ion-document-text"></i><b> RG:</b> </label>
+     <input  ng-required="true" type="text" name="rg" maxlength="11" ng-model="cadastro[0].rg" ng-blur="blurCallback(cadastro.rg)"  placeholder="RG *">
+
+   </label>
+   <span class="error" ng-show="formCadastro.rg.$error.required">Campo é obrigatório</span>
+   <span class="error" ng-show="formCadastro.rg.$error.maxlength ">No Máximo 11 caracteres</span>
+   <span style="font-size: 11px; color: gray" class="small">Somente números ex:123456789</span>
+ </div>
+
+
+
+
+ <div class="list list-inset">
+  <label class="imputs item item-input">
+   <label  style="color: #0f6e71; font-size: 12px"><i class="ion ion-home"></i><b> Rua:</b> </label>
+   <input  ng-required="true" name="endereco" type="text" style=" padding-left: 10px" ng-model="cadastro[0].endereco"  placeholder="Rua *">
+ </label>
+ <span class="error" ng-show="formCadastro.endereco.$error.required">Campo é obrigatório</span>
+
+</div>
+
+
+<div class="list list-inset">
+  <label class="imputs item item-input">
+   <label  style="color: #0f6e71; font-size: 12px"><i class="ion ion-home"></i><b> Bairro:</b> </label>
+   <input  ng-required="true"  type="text" style=" padding-left: 10px" name="bairro" ng-model="cadastro[0].bairro"  placeholder="Bairro *">
+ </label>
+ <span class="error" ng-show="formCadastro.bairro.$error.required">Campo é obrigatório</span>
+</div>
+
+<div class="list list-inset">
+  <label class="imputs item item-input">
+   <label  style="color: #0f6e71; font-size: 12px"><i class="ion ion-home"></i><b> Número:</b> </label>
+   <input  ng-required="true"  type="text" name="numero" style=" padding-left: 10px" ng-model="cadastro[0].numero"  placeholder="nº *">
+ </label>
+ <span class="error" ng-show="formCadastro.numero.$error.required">Campo é obrigatório</span>
+</div>
+
+
+<div class="list list-inset">
+  <label class="imputs item item-input">
+   <label  style="color: #0f6e71; font-size: 12px"><i class="ion ion-home"></i><b> CEP:</b> </label>
+   <input  type="text" style=" padding-left: 10px" class="positive" ng-model="cadastro[0].cep"  placeholder="CEP ">
+ </label>
+</div>
+
+<div class="list list-inset">
+  <label class="imputs item item-input">
+   <label  style="color: #0f6e71; font-size: 12px"><i class="ion ion-home"></i><b> Referência:</b> </label>
+   <input type="text" style=" padding-left: 10px" class="positive" ng-model="cadastro[0].referencia"  placeholder="Referência">
+ </label>
+</div>
+
+
+
+
+<div class="list list-inset">
+ <label class="item item-input item-select">
+  <div class="input-label textimput">
+    <label  style="color: #0f6e71; font-size: 12px; padding-right: 10px"><i class="ion ion-map"></i><b> Cidade:</b> </label>
+  </div>
+  <select name="cidade"  ng-required="true" ng-model="cadastro[0].cidade" >
+
+
+   <option ng-repeat="clientes in cidades | orderBy: 'nome' as filtered_result track by clientes.id_cidade"  value="{{clientes.id_cidade}}" >{{clientes.nome}}</option>
+
+ </select>
+</label>
+<span class="error" ng-show="formCadastro.cidade.$error.required ">Cidade obrigatório</span>
+
+</div>
+
+
+<div class="list list-inset">
+ <label class="item item-input item-select">
+  <div class="input-label textimput">
+   <label  style="color: #0f6e71; font-size: 12px; padding-right: 10px"><i class="ion ion-map"></i><b> Estado:</b> </label>
+ </div>
+ <select name="estado"  ng-required="true" ng-model="cadastro[0].uf" >
+
+
+  <option ng-repeat="estad in estados | orderBy: 'ID' as filtered_result track by estad.Sigla"  value="{{estad.Sigla}}" >{{estad.Sigla}}</option>
+
+</select>
+</label>
+<span class="error" ng-show="formCadastro.estado.$error.required ">estado obrigatório</span>
+
+</div>
+
+
+
+</form>
+<div class="row" >
+
+
+
+
+  <div class="col animated zoomIn">
+
+    <button ng-click="salvar(cadastro)"  ng-disabled="formCadastro.$invalid" class="button button-full button-balanced">
+      Salvar
+    </button>
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+
+
+</button>
+<div align="center"><span class="assertive small" ng-show="formCadastro.$invalid">Todos os campos com ' * ' são obrigatórios</span></div>
+</div>
+
+
+
+
+</ion-content>
+</ion-modal-view>

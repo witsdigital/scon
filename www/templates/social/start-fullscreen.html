@@ -1,0 +1,108 @@
+<style>
+
+  .logo2{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .barra{
+
+    z-index: 1;
+    position: relative;
+    
+    width: 100%;
+  }
+  .btn_menu{
+    width:100%;
+}
+.titulo{
+  text-align: center;
+}
+
+  </style>
+
+  <!-- Title for header bar (refer to www/index.html) -->
+  <ion-view hide-back-button="true" class="titulo" title="  ">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button ng-click="reloadPage()"  class="button button-icon icon ion-refresh"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+
+
+
+
+  <!-- Splash background - refer to .gem-splash_background in css/style.css to change image -->
+
+  <ion-content style="  background-image: url('img/menu/back2.jpg');">
+
+  <div style="background-color: #26b99a; height: 100px; padding-top: 30px " align="center"  > 
+
+      <span style="color: white; padding-top: 500px"><span style="font-size: 30px;text-align:center;vertical-align:middle;"> <span style="font-size: 15px;text-align:center;vertical-align:middle;"><span style="position: relative; top: -5px; left: 0px; font-size: 10px ">R$</span> </span>{{totalsaldo[0].total | currency: ' '}}</span></span>
+      <p><span style="font-size: 10px; color: #fff"> Saldo geral</span></p>
+    </div>
+
+  </div>
+  <div class="row" >
+
+    <div ng-show="totalclientes" style="background-color: #556080; padding: 25px" align="center" class="col">
+     <p style="color: #fff; font-size: 12px">TOTAL DE<br> CLIENTES</p>
+     <h1><b><span style="color: #fff">{{totalclientes}}</span></b></h1>
+   </div>
+
+
+   <div ng-show="totalpedidos" style="background-color: #4b6cb9; padding: 25px" align="center" class="col">
+
+     <p style="color: #fff; font-size: 12px">TOTAL DE<Br> VENDAS</p>
+     <h1><b><span style="color: green; color: #fff">{{totalpedidos}}</span></b></h1>
+   </div>
+
+
+
+ </div>
+
+
+
+
+ <div style="margin-top: 15%;" align="center">
+
+  <div class="row" >
+
+    <div class="col"> <a href="#/app/clientes"  nav-clear target="_self"><img class=""  style="width: 100%"  src="img/icones/clientes.png" alt="User"></a></div>
+    <div class="col"> <a href="#/app/estoque"  nav-clear target="_self"><img class=""  style="width: 100%"  src="img/icones/estoque.png" alt="User"></a></div>
+    <div class="col"> <a href="#/app/vendas"  nav-clear target="_self"><img class=""  style="width: 100%"  src="img/icones/pedido.png" alt="User"></a></div>
+
+
+
+
+  </div>
+
+<!--
+    <div class="row" >
+
+      <div class="col"> <a href="#"  nav-clear target="_self"><img class=""  style="width: 100%"  src="img/icones/relatorios.png" alt="User"></a></div>
+      <div class="col"> <a href="#/app/sincronizar"  nav-clear target="_self"><img class="" style="width: 100%" src="img/icones/sincronizar.png" alt="User"></a></div>
+      <div class="col"> <a href="#"  nav-clear target="_self"><img  ng-click="sair();" class="" style="width: 100%"  src="img/icones/sair.png" alt="User"></a></div>
+
+
+
+    </div>
+  
+  -->
+</div>
+
+
+</div>
+</ion-content>
+
+
+</ion-view>

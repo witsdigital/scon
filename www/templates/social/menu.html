@@ -1,0 +1,85 @@
+
+<ion-side-menus enable-menu-with-back-views="false">
+
+  <ion-side-menu-content  ion-side-menu-content-scale>
+    <ion-nav-bar ng-show="statuslogado" class="  bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons   side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" class="bar-calm menu-left-axis">
+
+    <ion-content>
+     <div style="background-color: #ef473a; height: 100px;" align="center"> 
+       <div style="  
+       margin-top: 15%;
+
+       position: absolute;
+       width: 50%; 
+       color: white /* A metade de sua largura. *//* O valor que você desejar. */">
+       MENU
+
+
+
+     </div>
+   </div>
+   <ion-list>
+
+    <ion-item ng-show="statuslogado" class="item-img-avatar" >
+      {{dadosuser.nome}}
+
+    </ion-item>
+    <ion-item class="item-ng-click menu" href="#/app/home" nav-clear menu-close ><i class="icon ion-home large"></i> Home   </ion-item>
+    <ion-item nav-clear menu-close href="#/app/clientes" nav-clear menu-close><i class="icon ion-person "> </i> Clientes</ion-item>
+    <ion-item nav-clear menu-close href="#/app/vendas" nav-clear menu-close><i class="icon ion-card "> </i> Vendas</ion-item>
+    <ion-item nav-clear menu-close href="#/app/estoque" nav-clear menu-close><i class="icon ion-cube "> </i> Estoque</ion-item>
+    <ion-item nav-clear menu-close href="#/app/sincronizar" nav-clear menu-close><i class="icon ion-refresh"> </i> sincronizar</ion-item>
+
+    <ion-item ng-click="sair();" ng-show="statuslogado"   nav-clear menu-close href="#"><i class="icon ion-close-circled "> </i> Sair</ion-item>
+    <ion-item  ng-show="!statuslogado"   nav-clear menu-close href="#/app/login"><i class="icon ion-locked "> </i> Login</ion-item>
+
+
+
+
+
+
+
+    </ion-list>
+  </ion-content>
+
+</ion-side-menu>
+</ion-side-menus>
+<div ng-show="statuslogado"  style="background-color: #4b6cb9;" class="tabs tabs-icon-top">
+ 
+
+  <a href="#/app/addvenda" class="tab-item">
+    <i  class=" btfooter icon ion-bag"></i>
+    <span style="color: #fff">NOVA VENDA</span>
+  </a>
+ 
+  <a  href="#/app/vendas" class="tab-item">
+    <i class="btfooter icon ion-pricetags"></i>
+    <span style="color: #fff">VENDAS</span>
+      <a  href="#/app/home" class="tab-item">
+    <i class="btfooter icon ion-home"></i>
+    <span style="color: #fff">HOME</span>
+  </a>
+
+  </a>  <a  href="#/app/estoque" class="tab-item">
+    <i class="btfooter icon ion-pricetags"></i>
+    <span style="color: #fff">ESTOQUE</span>
+  </a>
+
+  <a  href="#/app/clientes" class="tab-item">
+    <i class="btfooter icon ion-person-stalker"></i>
+    <span style="color: #fff">CLIENTES</span>
+  </a>
+  
+</div>

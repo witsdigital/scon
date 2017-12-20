@@ -1,0 +1,78 @@
+<style type="text/css">
+
+  .checked{
+    color: green;
+  }
+  .nochecked{
+    color: red;
+  }
+</style>
+
+<ion-view hide-back-button="true" title="Sincronização">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button ng-click="reloadPage()"  class="button button-icon icon ion-refresh"></button>
+  </ion-nav-buttons>
+
+
+  <ion-content  >
+
+
+
+
+    <br>
+    <div align="" style="padding: 0px; margin-left: 80%;" ></div>
+    <div  ng-controller="sincronizar">
+
+
+
+
+      <div >
+
+        <div class="card">
+          <div class="item item-divider">
+            <div align="center"> <h4>   Sincronização com servidor</h4></div>
+          </div>
+          <div class="item item-text-wrap">
+           <button   ng-click="sincDep();" class="button button-small button-full button-balanced">
+            Sincronizar Agora
+          </button>
+        </div>
+       
+
+
+      </div>
+
+      <div style="padding: 10px">
+        <div ng-show="okcliente" class="checked">Cliente <i class="ion checked ion-checkmark"></i></div>
+        <div ng-show="okcidade" class="checked">Cidade <i class="ion checked ion-checkmark"></i></div>
+        <div ng-show="okrep" class="checked">Pedidos do representante <i class="ion checked ion-checkmark"></i></div>
+        <div ng-show="okprod" class="checked">Produtos <i class="ion checked ion-checkmark"></i></div>
+        <div ng-show="okvenda" class="checked">Vendas <i class="ion checked ion-checkmark"></i></div>
+
+        <div ng-show="!okcliente" class="checked">Cliente <i class="ion nochecked ion-close-circled"></i></div>
+        <div ng-show="!okcidade" class="nochecked">Cidade <i class="ion nochecked ion-close-circled"></i></div>
+        <div ng-show="!okrep" class="nochecked">Pedidos do representante <i class="ion nochecked ion-close-circled"></i></div>
+        <div ng-show="!okprod" class="nochecked">Produtos <i class="ion nochecked ion-close-circled"></i></div>
+        <div ng-show="!okvenda" class="nochecked">Vendas <i class="ion nochecked ion-close-circled"></i></div>
+
+
+      </div>
+            <div  align="center"><img class="" ng-show="insinc"  style="width: 80%; padding: 20px"  src="img/loading2.gif" alt="User"></div>
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+</ion-content>

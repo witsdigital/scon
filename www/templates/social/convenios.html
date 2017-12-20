@@ -1,0 +1,49 @@
+
+
+<!-- Title for header bar (refer to www/index.html) -->
+<ion-view title="Convênios">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+<ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+ <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+   <ion-nav-buttons side="right">
+      <img ng-show="statuslogado" class="item_img img-circle " src="{{url+dadosuser.imgtumb}}">
+  </ion-nav-buttons>
+
+<ion-content class="has-header gem-ion-content" ng-controller="getConvenios">
+  <ion-refresher pulling-icon="ion-more" spinner="spiral"
+
+    on-refresh="doRefresh()">
+  </ion-refresher>
+
+<div class="list" align="center" ng-show="!lista.length"><h4>Sem convênio cadastrado</h4></div>
+<div ng-repeat="convenio in lista">
+    <div class="item item-avatar" href="#">
+      <img src="{{url+convenio.imgtumb}}">
+      <h2><strong>{{convenio.titulo}}</strong></h2>
+      <p>Plano de saúde</p>
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+  </ion-content>
+</ion-view>

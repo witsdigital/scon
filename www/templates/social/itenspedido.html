@@ -1,0 +1,21 @@
+<ion-modal-view>
+ <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Produtos</h1>
+  <button class="button button-clear button-primary" ng-click="modal.hide()">Fechar</button>
+</ion-header-bar>
+<ion-content  >
+
+
+ <ion-list>
+  <ion-item ng-repeat="pdto in produtos">
+   <h2><i class=" icon ion-bag"> </i>Nome: {{pdto.nome}}</h2>
+   <h4><i class=" icon ion-grid"> </i>Estoque atual: {{pdto.estoque}}</h4>
+
+
+
+ </ion-item>
+</ion-list>
+
+
+</ion-content>
+</ion-modal-view>

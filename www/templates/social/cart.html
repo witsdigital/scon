@@ -1,0 +1,60 @@
+<ion-modal-view  class="">
+ <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Carrinho</h1>
+  <button class="button button-clear button-primary" ng-click="close()"><i class="ion ion-close-round"></i></button>
+</ion-header-bar>
+<ion-content  >
+
+
+  <div align="center" style="color: white; padding: 10px; background-color: red"><b><i style="font-size: 20px" class="ion ion-ios-cart"> </i> Produtos no carrinho:</b></div>
+
+
+  <div class="row">
+    <div class="col">
+
+      <div ng-repeat="prod in dadoscart">
+
+       <div class="row">
+         <div style="color: gray"  class="col col-100">
+           <i class=" ion ion-pricetag"> </i><b style="font-size: 13px;  ">Valor: </b> 
+           <span style="font-size: 16px">  {{prod.preco | currency:'R$'}} </span><br>
+           <i class=" ion ion-pricetag"> </i><b style="font-size: 13px; color: gray">Produto: </b>
+           <span style="font-size: 16px"> {{prod.nome}} </span><br>
+         </div>
+       </div>
+
+       <div class="row">
+         <div  class="col col-60">
+           <div class="row">
+
+            <div align="center" class="col col-33">
+             <i style="text-align:center;vertical-align:middle; font-size: 40px" class="ion positive ion-minus-circled" ng-click="decrementeqtdcart(prod)"></i>
+           </div>
+           <div align="center" class="col col-33">
+           <input type="text" style="width: 100%; font-size: 20px; text-align: center" class="positive" value="{{prod.quantidade}}">
+
+           </div>
+
+           <div align="center" class="col col-33">
+            <i style="text-align:center;vertical-align:middle; font-size: 40px" class="ion positive ion-plus-circled" ng-click="incrementeqtdcart(prod)"></i>
+          </div>
+        </div>
+
+      </div>
+      <div  class="col col-40">
+       <button ng-click="rmcart(prod)" class=" button button-clear button-assertive ">Excluir</button>
+     </div>
+
+   </div>
+
+   <hr>
+
+
+ </div> 
+ <span style="font-size: 20px"><b>Total Compra: {{totalcompra | currency:'R$'}}</b></span>
+
+</div>
+
+
+</ion-content>
+</ion-modal-view>

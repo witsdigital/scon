@@ -1,0 +1,192 @@
+<ion-modal-view>
+ <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Venda</h1>
+  <button class="button button-clear button-primary" ng-click="fecharbar()">Fechar</button>
+</ion-header-bar>
+<ion-content  >
+<style type="text/css">
+  .icon{
+    font-size: 10px;
+  }
+</style>
+ <div style="padding: 20px">
+
+ 
+<div class="list card">
+
+  <a href="#" class="item item-icon-left">
+     <i style="    font-size: 20px;"  class="iconpedido icon ion-person"></i>
+{{pd.nome_cliente}}
+  </a>
+
+
+    <a style="background-color: #e9e4e4; "  href="#" class="item item-icon-left">
+     <i style="    font-size: 20px;" class="icon ion-calendar"></i>
+Venda:  {{pd.data | date:"dd/MMM/yyyy" }}
+  </a>
+
+  <a style="background-color: #e9e4e4; "   href="#" class="item item-icon-left">
+     <i style="    font-size: 20px;" class="icon ion-calendar"></i>
+Vencimento:  {{pd.data_vencimento | date:"dd/MMM/yyyy" }}
+  </a>
+
+
+  <a style="background-color: #33cd5f; color: #fff;" href="#" class="item item-icon-left">
+     <i style="    font-size: 20px;" class="icon ion-cash"></i>
+Total pedido:  {{pd.total_pedido | currency:'R$'}}
+  </a>
+
+    <a style="background-color: #11c1f3; color: #fff;"  href="#" class="item item-icon-left">
+     <i style="    font-size: 20px;" class="icon ion-cash"></i>
+Valor Pago:   {{pd.valor_pago | currency:'R$'}}
+  </a>
+
+     <a href="#" class="item item-icon-left">
+     <i style="    font-size: 20px;" class="icon ion-cash"></i>
+Valor Estornado:   {{pd.valor_estornado | currency:'R$'}}
+  </a>
+     <a style="background-color: #ef473a; color: #fff;"  href="#" class="item item-icon-left">
+     <i style="    font-size: 20px;" class="icon ion-cash"></i>
+Total a pagar:   {{pd.total_pedido-pd.valor_pago-pd.valor_estornado | currency:'R$'}}
+  </a>
+
+</div>
+
+
+
+
+</div>
+
+<div ng-repeat="prod in ipd">
+
+  <ion-list>
+    <ion-item>
+      <h3><b>Produto: </b> {{prod.nome_produto}} <br>
+        <small><b>Quantidade Vendida: </b> {{prod.saldoestoque}}</small>  <br> 
+
+        <b>Valor do produto: </b> {{prod.valor | currency:'R$'}} </h3>
+
+
+      </ion-item>
+    </ion-list>
+
+
+  </div>
+
+
+
+  <div ng-show="stornook">
+    <label  class="item item-input item-select">
+      <div class="input-label textimput">
+        Escolher produto
+      </div>
+      <select   ng-required="true" ng-model="cadastro.produto" >
+        <option  value="0">Selecione...</option>
+        <option ng-repeat="pd in ipd"  value="{{$index}}">{{pd.nome_produto}}</option>
+
+      </select>
+    </label>
+    <label class="imputs item item-input">
+      <input   ng-required="true" type="number" ng-model="cadastro.quantidade"  placeholder="Quantidade*">
+    </label>
+
+    <div class="row">
+      <div class="col">
+       <button ng-disabled="!cadastro.quantidade" ng-click="setEstorno(ipd[cadastro.produto],cadastro.quantidade);" class="button button-small button-full button-balanced">
+        Extornar
+      </button>
+
+    </div>
+    <div class="col">
+      <button ng-click="cancelEstornar();" class="button button-small button-full button-assertive">
+        Cancelar
+      </button>
+
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+<div ng-show="pd.status == 2">
+
+  <div align="center" style="color: white; padding: 10px; background-color: #39b29d"><b> PEDIDO FINALIZADO</b></div>
+
+</div>
+
+
+<div ng-show="campopagar">
+  <div class="row" >
+    <div style="font-size: 9px" class="col col-50"> <b>Produto</b>  </div>
+    <div style="font-size: 9px" class="col col-25"> <b>Qtd comprada</b>  </div>
+    <div style="font-size: 9px" class="col col-325"><b>Qtd Vendida</b>  </div>
+
+  </div>
+  <div class="row" ng-repeat="prod in ipd">
+
+    <div style="font-size: 13px" class="col col-50"> {{prod.nome_produto}}  </div>
+    <div class="col col-15">{{prod.saldoestoque}} </div>
+    <div class="col col-35"> 
+
+      <i style="text-align:center;vertical-align:middle; font-size: 25px" class="ion positive ion-minus-circled" ng-click="decremente(prod)"></i>
+      <span style="text-align:center;vertical-align:middle; font-size: 25px"> {{prod.qtdpag}}</span>
+      <i style="text-align:center;vertical-align:middle; font-size: 25px" class="ion positive ion-plus-circled" ng-click="incremente(prod)"></i></div>
+    </div>
+
+    <div class="row" >
+      <div style="font-size: 11px" class="col col-30"> <b></b>  </div>
+      <div style="font-size: 12px" class="col col-35"> <b><label><b style="font-size: 10px">subtotal: </b></label> <br>{{itenspdtotal| currency:'R$'}} </b>  </div>
+      <div style="font-size: 11px" class="col col-35"><label><b style="font-size: 10px">Valor Pago R$</b></label> <input style="width: 90%; background-color: #f5f5f5; border-radius: 10px; text-align: center"  ng-required="true" type="number" ng-model="apagartotal"  placeholder="R$*">  </div>
+
+
+
+    </div>
+
+    <div class="row">
+      <div class="col col-50">
+
+        <button   ng-click="addPag(pd.id_pedido_cliente,apagartotal);" class="button button-small button-full button-balanced">
+          Salvar
+        </button>
+
+      </div>
+      <div class="col col-50">
+
+        <button ng-disabled="cadastro.quantidade" ng-click="cancelar();" class="button button-small button-full button-assertive">
+          Cancelar
+        </button>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+  <div ng-show="pd.status != 2" class="row">
+    <div class="col">
+     <button ng-disabled="bts" ng-click="estornar();" class="button button-small button-full button-balanced">
+      Extornar
+    </button>
+  </div>
+  <div class="col">
+   <button ng-disabled="bts" ng-click="finalizaPedido(pd);"  class="button button-small button-full button-calm">
+    Finalizar
+  </button>
+</div>
+<div class="col">
+ <button ng-disabled="!btpags" ng-click="pagar();" class="button button-small button-full button-assertive">
+  Pagar
+</button>
+</div>
+
+</ion-content>
+</ion-modal-view>

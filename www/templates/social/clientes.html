@@ -1,0 +1,69 @@
+
+<!-- Title for header bar (refer to www/index.html) -->
+<ion-view hide-back-button="true" title="Clientes  ">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a href="#/app/cadastro"> <i class="button button-icon icon ion-person-add"></i></a>
+    
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+
+
+  <ion-content class="has-header gem-ion-content" ng-controller="clientes">
+    <ion-refresher pulling-icon="ion-more" spinner="spiral" on-refresh="doRefresh()">
+
+    </ion-refresher>
+
+
+
+    <ion-list>
+
+
+      <ion-item ng-repeat="cliente in lista">
+        <div class="row">
+          <div style="width: 50%" class="col col-60">
+          <p style="width: 90%"> <b>{{cliente.nome}}</b></p>
+            <h5><i class=" icon ion-email"> </i>{{cliente.email}}</h5>
+          </div>
+          <div class="col col-20"> <button ng-click="apagar(cliente)" class=" button button-clear  button-assertive">Excluir</button></div>
+          <div class="col col-20"> <button ng-click="editar(cliente)" class="button button-clear button-positive">Editar</button></div>
+
+        </div>
+
+
+
+
+
+
+      </ion-item>
+    </ion-list>
+
+
+
+
+
+
+
+    <div class="list" align="center" ng-show="!n.length"><h4>{{msg}}</h4></div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</ion-content>
+</ion-view>

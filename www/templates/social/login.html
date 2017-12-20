@@ -1,0 +1,48 @@
+<style type="text/css">
+
+
+  .telalogin{
+   background-image: url("img/menu/back_login.jpg");
+
+   
+
+ }
+
+</style>
+
+<ion-content ng-controller="initLogin" class="telalogin ">
+
+  <div align="center">  <img class=""  style="width: 80%; margin-top: 100px"  src="img/icones/logo.png" alt="User"></div>
+
+  <div id="login" style="margin-top: -100px" >
+
+    <form name="formLogin"> 
+
+      <input  name="login" type="text" id="user" placeholder="Login" ng-model="login.login" ng-required="true"/>
+
+
+      <span  ng-show="formLogin.login.$invalid && formLogin.login.$dirty"><b>Pereencha o campo LOGIN corretamente!</b></span>
+
+      <input type="password" id="pass" placeholder="Senha"  name="senha" ng-model="login.senha" ng-required="true">
+      <div align="center"> <button class="button  button-positive" ng-disabled="formLogin.$invalid || !statusconexao" ng-click="loginUsuario(login)">Entrar</button>
+       <a  href="#/app/start" ><button class="button button-assertive">Voltar</button></a></div>
+       <div style="text-align: center; font-size: 11px; color: red" ng-if="!statusconexao">
+       Você possui conexão com a internet? <span ng-click="reloadPage()"><b>atualizar</b></span>
+       </div>
+
+     </form><br>
+
+
+
+   </div>
+
+
+   
+   
+ </ion-content>
+
+
+
+
+
+ 

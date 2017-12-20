@@ -1,0 +1,36 @@
+<ion-view title="Meus Exames">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+      <img ng-show="statuslogado" class="item_img img-circle " src="{{url+dadosuser.imgtumb}}">
+  </ion-nav-buttons>
+  <!-- ======================
+  MAIN CONTENT SECTION
+  ====================== -->
+  <ion-content class="has-header gem-ion-content">
+  
+
+
+<div ng-show="ativo" class="list">
+
+
+
+  <a target="_blank" href="{{url+exame.patch+'/'+exame.arquivo}}"  ng-repeat="exame in lista" class="item item-icon-left  item-icon-right" href="#">
+    <i class="icon small ion-clipboard"></i>
+  <span class="small"><strong> {{exame.descricao}}</strong></span>
+   <div class="small balanced"> {{exame.data}}</div>
+    <i class="icon small ion-ios-arrow-down"></i>
+  </a>
+
+  
+
+</div>
+
+
+  </ion-content>
+</ion-view>

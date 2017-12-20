@@ -1,0 +1,148 @@
+
+
+
+<style type="text/css">
+  .textimput{
+    color: #c6c6c6;
+  }
+  .imputs{
+    background-color: #f4f4f4;
+  }
+
+  .bar.bar-positive{
+
+
+   background-color: #{{cor}};
+
+ }
+
+ .platform-ios.platform-cordova:not(.fullscreen) .top-statusbar {
+  border-top: 20px solid #0c29a4 !important;
+  width: 100%;
+}
+</style>
+
+
+<ion-view hide-back-button="true" view-title="Nova Venda">
+
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="right">
+    <button menu-toggle="left" class="button button-icon icon ion-bag">{{totalcart}}</button>
+  </ion-nav-buttons>
+
+
+
+  <div class="text-center positive middle-align" ng-if="msg != ''">
+    {{msg}}
+  </div>
+  <ion-content style="  background-image: url('img/menu/back3.jpg');" ng-controller="addvenda">
+
+
+
+
+    <div > <!-- inicio logado -->
+
+      <div >
+
+
+
+
+        <form name="formCadastro">
+
+          <input value="{{dadosuser.id}}" type="hidden" ng-model="cadastro.usuario" >
+
+          <div class="row" >
+
+            <div class="col col-50">
+             <button class="button  button-full button-balanced" modal-select="" ng-model="cliente" options-expression="person in selectableNames | orderBy:'role' | filter : externalFilter" modal-title="Selecione" cancel-button="Cancelar" reset-button="Resetar" search-placeholder="Procurar" cancel-search-button="Limpar" header-footer-class="bar-positive" has-search="true">
+              <span style="font-size: 15px"><i class="ion ion-person"></i> Cliente</span>
+              <div class="option">
+                <h2>{{option.nome}}</h2>
+              </div>
+            </button>
+          </div>
+          <div class="col col-50">
+           <button ng-disabled="!cliente.nome" ng-click="additens(cliente.nome)" class="button  button-full button-positive">
+             <span style="font-size: 15px"><i class="ion ion-bag"></i> Produtos</span>
+           </button>
+         </div>
+
+
+
+
+       </div>
+       <div class="row" >
+
+        <div class="col col-100">
+          <div  ng-if="cliente">
+            <b>  Cliente: </b> {{cliente.nome}}
+          </div>
+
+        </div></div>
+
+        <hr style="color: gray; opacity: 0.5">
+
+        <div class="row" >
+
+         <div align="center" class="col">
+           <p style="color: gray"><i style="font-size: 30px" class="ion ion-bag"> </i><br>
+
+             <small><b>Produtos no carrinho:</b></small></p>
+
+             <h3 ><b>  {{totalcart}}</b></h3>
+           </div>
+
+
+           <div align="center" class="col">
+             <p style="color: gray"><i style="font-size: 30px" class="ion ion-cash"> </i><br>
+
+               <small><b>Total do pedido:</b></small></p>
+
+               <h3 ><b> {{totalcompra | currency:'R$'}}  </b></h3>
+             </div>
+
+
+
+
+
+
+           </div>
+           <div class="list">
+
+            <label class="item item-input ">
+              <div style="" class="input-label">
+               Data Vencimento
+              </div>
+              <input  style="margin-left: 50px;" ng-required="true"  ng-model="cliente.dpag" type="date" >
+
+            </div>
+
+
+
+          </form>
+
+        </div>
+      </div> <!-- fim logado -->
+      <div class="row" >
+
+
+        <div class="col animated zoomIn col-30">
+          <button ng-show="totalcart" ng-disabled="formCadastro.$invalid " ng-click="revisa(cliente)" class="button  button-full button-small button-energized">
+            Revisar pedido
+          </button>
+        </div>
+
+
+
+
+      </div>
+    </ion-content>
+
+

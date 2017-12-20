@@ -1,0 +1,60 @@
+<ion-modal-view  class="">
+ <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Editar</h1>
+  <button class="button button-clear button-primary" ng-click="modal.hide()"><i class="ion ion-close-round"></i></button>
+</ion-header-bar>
+<ion-content  >
+   <div align="center" style="color: white; padding: 10px; background-color: #39b29d"><b><i style="font-size: 20px" class="ion ion-bag"> </i> Dados do pedido</b></div>
+
+  <div style="padding: 5px; color: gray">
+
+ 
+   <div class="row"  >
+     <div class="col">
+      <i class="ion ion-person"> </i><b> Nome do Cliente: </b><h4>{{dados.nomecliente | uppercase}}</h4>
+      <i class="ion ion-card"> </i><b> Total da compra: </b><h4>{{dados.totalcompra | currency:'R$'}}</h4>
+
+     </div>
+   </div>
+</div>
+
+
+   <div align="center" style="color: white; padding: 10px; background-color: #1664b3"><b><i style="font-size: 20px" class="ion ion-bag"> </i> Produtos Escolhidos</b></div>
+
+   <div ng-repeat="prod in dadoscart">
+
+    <ion-list>
+      <ion-item>
+        <h3><i class=" ion ion-pricetag"> </i><b>Produto: </b> {{prod.nome}} <br>
+         <small><b>Quantidade: </b> {{prod.quantidade}}</small>  <br> 
+         <b>Valor da compra: </b> R$ {{prod.preco}} </h3>
+       </ion-item>
+     </ion-list>
+
+
+   </div>
+
+   <div class="row" >
+
+
+    <div class="col animated zoomIn col-30">
+      <button   ng-click="finalizar()" class="button  button-full button-balanced">
+       Confirmar
+     </button>
+   </div>
+
+
+   <div class="col animated zoomIn col-30">
+    <button   ng-click="modal.hide()" class="button  button-full button-positive">
+     Cancelar
+   </button>
+ </div>
+
+
+
+
+</div>
+</div>
+
+</ion-content>
+</ion-modal-view>

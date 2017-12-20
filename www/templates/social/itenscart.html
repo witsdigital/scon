@@ -1,0 +1,119 @@
+<ion-modal-view>
+ <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Adicionar</h1>
+  <button class="button button-clear button-primary" ng-click="modal.hide()">Fechar</button>
+</ion-header-bar>
+<ion-content  >
+ <form name="formCadastro">
+
+
+   <div class="row" >
+   
+  <div class="col col-100">
+    <button  class="button  button-small button-full button-positive" modal-select="w" on-select="validaProduto(cadastro.produto)" ng-model="cadastro.produto" options-expression="person1 in produtos | orderBy:'+nome' | filter : externalFilter" modal-title="Selecione" cancel-button="Cancelar" reset-button="Resetar" search-placeholder="Procurar" cancel-search-button="Limpar" header-footer-class="bar-positive" has-search="true">
+     Inserir Produto
+     <div class="option">
+      <h2>{{option.nome}}  <span style="font-size: 10px; font-weight: bold; color: green;"> - {{option.estoque}} Disp.</span>  </h2>
+
+    </div>
+  </button>
+</div>  
+
+</div>
+
+<div ng-if="cadastro.pedido" >
+ <div class="row">
+  <div style="font-size: 13px; color: gray" class="col col-100">
+    <b>  Cod Pedido: </b> {{cadastro.pedido.id}} <b>Data Vencimento:</b> {{cadastro.pedido.data_vencimento | date:"dd/MM/yyyy"}}
+  </div>
+
+
+</div>
+<hr>
+</div>
+
+
+
+<div class="row" >
+
+</div>
+
+
+<div ng-show="viewPd" class="row">
+
+
+  <div class="col">
+
+
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><b>Produto: </b> {{viewPd.nome}} </span>
+
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><b>Valor: </b>{{viewPd.preco2 | currency:'R$'}}</span><Br>
+        <span class="input-label"><b>Valor Sugerido: </b>{{viewPd.preco3 | currency:'R$'}}</span><br>
+        <span style="font-size: 13px" class="input-label"><b>Estoque atual: </b>{{viewPd.estoque }}</span>
+
+      </label>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- <div ng-if="cadastro.produto">-->
+<div ng-if="cadastro.produto">
+
+
+  <div class="row">
+    <div class="col col-100">
+      <div style="vertical-align:middle;"  class="row" >
+        <div  style="font-size: 20px;" class="col col-70">
+          Quantidade:
+        </div>
+     
+       <div align="center"  class="col positive col-20">
+        <input type="text" style="width: 100%; font-size: 20px; text-align: center; background-color: #d8d8d8;" class="positive" value="{{cadastro.quantidade}}" ng-model="cadastro.quantidade" maxlength="3">
+      </div>
+     
+    </div>
+
+
+  </div>
+  
+</div>
+
+
+
+
+
+
+ <div class="row">
+
+
+   <button ng-disabled="!viewPd" ng-click="addcart(cadastro.produto, cadastro)" class="button button-small button-full button-balanced">
+    Adicionar
+  </button>
+</div>
+</div>
+
+
+</form>
+
+</ion-content>
+<div style="background-color: red;  color: #fff; height: 50px; text-align:center;vertical-align:middle;" ng-click="opencart()" ng-if="dadoscart.length>0" class="bar bar-footer">
+<div   class="row ">
+  <div class="col col-33">
+  {{totalcompra | currency:'R$'}}
+  </div>
+  <div class="col col-33">
+   <i style="font-size: 20px" class="ion ion-ios-cart"> </i>  Carrinho
+  </div>
+  <div class="col col-33">
+{{totalcart}}
+  </div>
+</div>
+</div>
+</ion-modal-view>

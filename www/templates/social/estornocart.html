@@ -1,0 +1,71 @@
+<ion-modal-view>
+ <ion-header-bar class="bar bar-header bar-positive">
+  <h1 class="title">Editar</h1>
+  <button class="button button-clear button-primary" ng-click="modal.hide()">Fechar</button>
+</ion-header-bar>
+<ion-content  >
+   <form name="formCadastro">
+ <label class="item item-input item-select">
+  <div class="input-label textimput">
+ Pedido
+    </div>
+    <select ng-change="getProdutosbyRp(cadastro.pedido)"   ng-required="true" ng-model="cadastro.pedido" >
+
+      <option  value="0">Selecione...</option>
+      <option ng-click="getProdutosbyRp(cadastro.pedido)" ng-repeat="pd in pedidoRp"  value="{{pd.id}}">{{pd.id}}</option>
+
+    </select>
+  </label>
+
+
+
+   <label class="item item-input item-select">
+  <div class="input-label textimput">
+    ADD produto
+    </div>
+    <select ng-change="validaProduto(produtos[cadastro.produto])"   ng-required="true" ng-model="cadastro.produto" >
+  <option  value="0">Selecione...</option>
+      <option ng-repeat="pd in produtos"  value="{{$index}}">{{pd.nome}}</option>
+
+    </select>
+  </label>
+
+  <div ng-show="viewPd" class="row">
+  <div class="col"><b>Produto:</b> {{viewPd.nome}} | <b>Estoque atual:</b> {{viewPd.estoque}}</div>
+    
+  </div>
+
+  <label class="imputs item item-input">
+          <input   ng-required="true" type="number" ng-model="cadastro.quantidade"  placeholder="Quantidade*">
+        </label>
+
+
+
+<div align="center" style="color: gray; padding: 20px"><b><i style="font-size: 20px" class="ion ion-bag"> </i> Produtos no carrinho: {{totalcart}}</b></div>
+
+<div ng-repeat="prod in dadoscart">
+
+  <ion-list>
+    <ion-item>
+      <h3><i class=" ion ion-pricetag"> </i><b>Produto: </b> {{prod.nome}} <br>
+       <small><b>Quantidade: </b> {{prod.quantidade}}</small>  <br> 
+
+       <b>Valor da compra: </b> {{prod.preco | currency:'R$'}} </h3>
+
+
+
+      <ion-option-button ng-click="rmcart(prod)" class="button-assertive">Excluir</ion-option-button>
+    </ion-item>
+  </ion-list>
+
+
+</div>
+</form>
+
+    <button ng-disabled="formCadastro.$invalid" ng-click="addcart(produtos[cadastro.produto], cadastro)" class="button button-small button-full button-balanced">
+Adicionar
+</button>
+
+
+</ion-content>
+</ion-modal-view>

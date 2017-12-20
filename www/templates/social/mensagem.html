@@ -1,0 +1,84 @@
+
+
+
+<style type="text/css">
+  .textimput{
+    color: #c6c6c6;
+  }
+  .imputs{
+    background-color: #f4f4f4;
+  }
+
+  .bar.bar-positive{
+
+
+   background-color: #{{cor}};
+
+ }
+
+ .platform-ios.platform-cordova:not(.fullscreen) .top-statusbar {
+  border-top: 20px solid #0c29a4 !important;
+  width: 100%;
+}
+</style>
+
+
+<ion-view view-title="Pergunte">
+
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+
+
+
+  <div class="text-center positive middle-align" ng-if="msg != ''">
+    {{msg}}
+  </div>
+  <ion-content ng-controller="mensagem">
+  <div align="center" style="color: green; padding-top: 50px;" ng-if="!pdpergunta"> <b>Hoje não temos palestra!</b></div>
+
+    <div ng-if="pdpergunta">
+
+      <div style="margin-top: 10px; color: green" align="center"><b>Envie sua pergunta para o palestrante</b></div>
+      <form name="formCadastro">
+
+
+        <div class="list list-inset">
+          <label class=" item item-input">
+            <textarea ng-model="mensagem.pergunta">
+
+
+
+            </textarea>  
+          </label>
+        </div>
+
+
+      </form>
+      <div class="row" >
+
+
+
+
+        <div class="col animated zoomIn col-30">  <button  ng-if="formCadastro.$valid"  ng-click="cadastrar(mensagem)" class="button button-full button-calm">
+          Enviar
+        </button ></div>
+
+
+
+
+
+      </div>
+
+
+    </button>
+    <div align="center"><span class="assertive small" ng-show="formCadastro.$invalid">Todos os campos com ' * ' são obrigatórios</span></div>
+  </div>
+</div>
+</ion-content>
+</ion-view>

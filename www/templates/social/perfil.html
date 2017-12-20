@@ -1,0 +1,57 @@
+<ion-content  >
+
+  <div ng-show="statuslogado">
+
+
+
+    <div align="" style="padding: 10px; margin-left: 80%;" ><a href="#/app/start"><i style="font-size: 30px; color: gray" class=" big ion ion-close"></i></a></div>
+    <div  ng-controller="getEspecialistaone">
+
+
+
+
+     <div style="padding: 10%; margin-top: 0px;">
+
+      <div align="center"> 
+        <h4>{{dadosuser.nome}}</h4>
+        <span class=" small balanced">{{dadosuser.email}}</span>
+        <br><span class="small balanced">{{dadosuser.telefone}}</span>
+
+      </div> 
+
+    </div>
+
+
+
+  </div>
+</div>
+
+ <div ng-show="!statuslogado">
+    
+
+
+    <div align="" style="padding: 10px; margin-left: 80%;" ><a href="#/app/start"><i style="font-size: 30px; color: gray" class=" big ion ion-close"></i></a></div>
+    <div  >
+     
+
+     
+    
+     <div style="padding: 10%; margin-top: 0px;">
+      
+      <div align="center"> 
+        <h3>Você não esta logado</h3>
+        <span class=" small balanced">Faça o login para visualizar seu perfil</span><br><br>
+        <br><span class="small balanced"><a href="#/app/login"><button class="button button-balanced">
+  Entrar agora!
+</button></a></span>
+
+      </div> 
+
+    </div>
+
+
+
+  </div>
+</div>
+
+</ion-content>
